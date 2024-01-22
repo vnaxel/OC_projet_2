@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { DetailsComponent } from './pages/details/details.component';
+import { ErrorComponent } from './pages/error/error.component';
 
 const routes: Routes = [
     {
@@ -10,13 +11,17 @@ const routes: Routes = [
         component: DashboardComponent,
     },
     {
-        path: '**', // wildcard
-        component: NotFoundComponent,
-    },
-    {
         path: 'details/:id',
         component: DetailsComponent,
     },
+    {
+        path: 'error',
+        component: ErrorComponent,
+    },
+    {
+        path: '**', // wildcard
+        component: NotFoundComponent,
+    }
 ];
 
 @NgModule({
