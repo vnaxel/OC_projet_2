@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+ngx-tooltip-content.ngx-charts-tooltip-content.type-tooltip {
+    .tooltip-caret.position-top {
+      border-top-color: rgba(4,131,143,255);
+      box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+    }
+    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    background-color: rgba(4,131,143,255);
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+    padding: .5rem 1rem .5rem 1rem;
+  }
+
+text.pie-label {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    white-space: pre;
+}
