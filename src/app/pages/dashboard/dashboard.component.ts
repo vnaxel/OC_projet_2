@@ -51,6 +51,8 @@ export class DashboardComponent {
         });
     }
 
+    //TODO: move logic to service layer
+
     customTooltipText({ data }: { data: Country }): string {
         return `${data.name}<br>🏅${data.value}`;
     }
