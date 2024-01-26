@@ -1,7 +1,26 @@
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    height: 80vh;
-    font-size: large;
+.chart{
+    &--desktop{
+        height: 50vh;
+        width: 80vw;
+    }
+    &--mobile{
+        height: 30vh;
+        width: 90vw;
+    }
+}
+
+@media (max-width: 680px) {
+    .chart{
+        &--mobile{
+            display: unset!important;
+        }
+    }
+}
+
+@media (min-width: 680px) {
+    .chart{
+        &--desktop{
+            display: unset!important;
+        }
+    }
 }

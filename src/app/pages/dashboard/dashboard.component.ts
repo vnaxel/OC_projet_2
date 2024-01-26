@@ -4,6 +4,7 @@ import { Olympic } from 'src/app/core/models/Olympic';
 import { Country } from 'src/app/core/models/Country';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { Router } from '@angular/router';
+import { LegendPosition } from '@swimlane/ngx-charts';
 
 @Component({
     selector: 'app-dashboard',
@@ -15,10 +16,10 @@ export class DashboardComponent {
     public olympics$!: Observable<Olympic[]>;
     public subscription: Subscription = new Subscription();
     public OlympicData: Olympic[] = [];
-    public OlympicGamesCount: any;
+    public OlympicGamesCount: number = 0;
     public CountriesCount: number = 0;
     public chartData: Country[] = [];
-    public customColors = []
+    public legendPositionResponsive: LegendPosition = LegendPosition.Below;
 
     constructor(private olympicService: OlympicService, private router: Router) { }
 
@@ -65,8 +66,12 @@ export class DashboardComponent {
         return `  ${name}  `;
     }
 
-    onSelect(event: Country) {
-        this.router.navigate([`/details/${event.extra.id}`]);
+    onSelect(event: Country | string) {
+        if (typeof event === 'string') {
+            const id = this.OlympicData.find(country => country.country === event)?.id;
+            this.router.navigate([`/details/${id}`]);
+        } else {
+            this.router.navigate([`/details/${event.extra.id}`]);
+        }
     }
-
 }

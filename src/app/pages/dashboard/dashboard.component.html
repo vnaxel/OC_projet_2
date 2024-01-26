@@ -1,12 +1,46 @@
-    <ngx-charts-pie-chart 
-    [results]="chartData"
-    [animations]="false"
-    [labels]="true"
-    [tooltipText]="customTooltipText"
-    [customColors]="customColors"
-    [trimLabels]="false"
-    [animations]="false"
-    [labelFormatting]="customLabelText"
-    (select)="onSelect($event)"
-    >
-    </ngx-charts-pie-chart>
+    <div class="container">
+        <div class="header">
+            <div class="header__titleBox">
+                <div class="header__titleBox__title">Medals per Country</div>
+            </div>
+            <div class="header__boxes">
+                <div class="header__boxes__box">
+                    <div class="header__boxes__box__title">Number of JOs</div>
+                    <div class="header__boxes__box__value">{{this.OlympicGamesCount}}</div>
+                </div>
+                <div class="header__boxes__box">
+                    <div class="header__boxes__box__title">Number of countries</div>
+                    <div class="header__boxes__box__value">{{this.CountriesCount}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="chart--desktop" style="display: none;">
+            <ngx-charts-pie-chart 
+            [results]="chartData"
+            [animations]="false"
+            [labels]="true"
+            [tooltipText]="customTooltipText"
+            [trimLabels]="false"
+            [animations]="false"
+            [labelFormatting]="customLabelText"
+            (select)="onSelect($event)"
+            >
+            </ngx-charts-pie-chart>
+        </div>
+        <div class="chart--mobile" style="display: none;">
+            <ngx-charts-pie-chart 
+            [results]="chartData"
+            [animations]="false"
+            [labels]="false"
+            [legend]="true"
+            [legendPosition]="legendPositionResponsive"
+            [tooltipText]="customTooltipText"
+            [trimLabels]="false"
+            [animations]="false"
+            [labelFormatting]="customLabelText"
+            (select)="onSelect($event)"
+            >
+            </ngx-charts-pie-chart>
+        </div>
+    </div>
+    

@@ -51,6 +51,26 @@
     }
 }
 
+@media (max-width: 680px) {
+    .header{
+        &__boxes{
+            flex-direction: column;
+            &__box {
+                margin: .5rem 0 1rem 0;
+            }
+        }
+    }
+}
+
+
+// ####################################################################
+// ###################### charts related styles #######################
+// ####################################################################
+
+
+// ######################## pie chart styles ##########################
+
+
 ngx-tooltip-content.ngx-charts-tooltip-content.type-tooltip {
     .tooltip-caret.position-top {
       border-top-color: $primary-color;
@@ -67,6 +87,30 @@ text.pie-label {
     font-size: 1rem;
     white-space: pre;
 }
+
+.pie-label-line {
+    //grossir la ligne
+    stroke-width: 2px;
+}
+
+.chart-legend {
+    background-color: $primary-color;
+    padding: .5rem .0 .5rem 0!important;
+    border-radius: .5rem;
+}
+
+.chart-legend > div{
+    font-size: 1.2rem;
+    color: white;
+}
+
+.legend-labels {
+    display: flex;
+    flex-direction: column;
+    background: $primary-color!important;
+}
+
+// ####################### line chart styles ##########################
 
 .x.axis > .ng-star-inserted {
     padding-top: 2rem;
