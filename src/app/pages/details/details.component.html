@@ -1,1 +1,36 @@
-<p>details works!</p>
+<div class="container">
+    <div class="header">
+        <div class="header__titleBox">
+            <div class="header__titleBox__title">{{this.countryName}}</div>
+        </div>
+        <div class="header__boxes">
+            <div class="header__boxes__box">
+                <div class="header__boxes__box__title">Number of entries</div>
+                <div class="header__boxes__box__value">{{this.numberOfParticipations}}</div>
+            </div>
+            <div class="header__boxes__box">
+                <div class="header__boxes__box__title">Total number of medals</div>
+                <div class="header__boxes__box__value">{{this.numberOfMedals}}</div>
+            </div>
+            <div class="header__boxes__box">
+                <div class="header__boxes__box__title">Total number of athletes</div>
+                <div class="header__boxes__box__value">{{this.numberOfAtletes}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chart">
+        <ngx-charts-line-chart
+        [results]="chartData"
+        [xAxis]="true"
+        [yAxis]="true"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        xAxisLabel="Dates"
+        yAxisLabel="Number of medals"
+        [tooltipDisabled]="true"
+        [animations]="false"
+        [gradient]="false"
+        ></ngx-charts-line-chart>
+    </div>
+</div>
