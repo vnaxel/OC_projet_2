@@ -10,8 +10,12 @@ export class ErrorComponent {
     public error: Error = new Error();
     constructor(private router: Router) {
         const navigation = this.router.getCurrentNavigation();
-        if (navigation) {
+        if (navigation?.extras.state) {
             const state = navigation.extras.state as { error: { message: string, name: string } };
+            this.error = new Error(state.error.message);
+            this.error.name = state.error.name;
+        } else {
+            const state = { error: { message: "Requested page not found", name: "404" } };
             this.error = new Error(state.error.message);
             this.error.name = state.error.name;
         }
