@@ -32,13 +32,7 @@ export class DetailsComponent {
 
         this.countryId = this.route.snapshot.params['id'];
 
-        this.subscription = this.olympics$
-        .pipe(finalize(() => {
-            if (!this.country) {
-                this.router.navigate(['/error'], { state: { error: {message: 'Country not found', name: '404'} } });
-            }
-        }))
-        .subscribe(data => {
+        this.subscription = this.olympics$.subscribe(data => {
             const country = data.find(country => country.id == this.countryId);
             this.country = country;
             if (country) {
@@ -67,6 +61,12 @@ export class DetailsComponent {
                 this.chartData = [{ name: this.countryName, series: medalsPerYear }];
             }
         });
+    }
+
+    ngAfterViewInit(): void {
+        if (this.countryName === '') {
+            this.router.navigate(['/error'], { state: { error: { message: `Id: ${this.countryId} - Country not found`, name: '404' } } });
+        }
     }
 
     ngOnDestroy(): void {

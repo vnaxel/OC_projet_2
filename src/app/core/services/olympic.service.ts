@@ -7,32 +7,31 @@ import { Router } from '@angular/router';
 
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class OlympicService {
-private olympicUrl = './assets/mock/olympic.json';
-private olympics$ = new BehaviorSubject<Olympic[]>([]);
+    private olympicUrl = './assets/mock/olympic.json';
+    private olympics$ = new BehaviorSubject<Olympic[]>([]);
 
-constructor(private http: HttpClient, private router: Router) {}
+    constructor(private http: HttpClient, private router: Router) { }
 
-loadInitialData() {
-    return this.http.get<Olympic[]>(this.olympicUrl).pipe(
-        tap((value) => {
-            this.olympics$.next(value);
-            this.olympics$.complete();
-        }),
-        catchError((error, caught) => {
-            
-            // redirect to error page
-            this.olympics$.unsubscribe();
-            this.router.navigate(['/error'], { state: { error: {message: error.message, name: error.name} } });
+    loadInitialData() {
+        return this.http.get<Olympic[]>(this.olympicUrl).pipe(
+            tap((value) => {
+                this.olympics$.next(value);
+            }),
+            catchError((error, caught) => {
 
-            return caught;
-        })
-    );
-}
+                // redirect to error page
+                this.olympics$.unsubscribe();
+                this.router.navigate(['/error'], { state: { error: { message: error.message, name: error.name } } });
 
-  getOlympics() {
-    return this.olympics$.asObservable();
-  }
+                return caught;
+            })
+        )
+    }
+
+    getOlympics() {
+        return this.olympics$.asObservable();
+    }
 }
