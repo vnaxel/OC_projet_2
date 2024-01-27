@@ -10,16 +10,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 2rem 0 0 0;
+    margin: 2rem 10% 2rem 10%;
 }
 
-.header{
+.header {
     display: flex;
     flex-direction: column;
-    &__titleBox{
+
+    &__titleBox {
         display: flex;
         justify-content: center;
         align-items: center;
+
         &__title {
             font-size: 1.5rem;
             margin-bottom: .5rem;
@@ -30,19 +32,23 @@
             border-radius: .5rem;
         }
     }
-    &__boxes{
+
+    &__boxes {
         display: flex;
+
         &__box {
             margin: .5rem .5rem 1rem .5rem;
             padding: .5rem .5rem .5rem .5rem;
             border-radius: .5rem;
             border: 2px solid $secondary-color;
-            &__title{
+
+            &__title {
                 color: $grey-text;
                 text-align: center;
                 margin-bottom: .3rem;
             }
-            &__value{
+
+            &__value {
                 font-weight: 700;
                 font-size: .9rem;
                 text-align: center;
@@ -51,10 +57,35 @@
     }
 }
 
+.button__container {
+    display: flex;
+    padding: 1rem;
+    width: 100%;
+}
+
+.button {
+    padding: 1rem;
+    background-color: $primary-color;
+    color: white;
+    border-radius: .5rem;
+    border: none;
+    font-weight: 500;
+    font-size: 1rem;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secondary-color;
+    }
+}
+
 @media (max-width: 680px) {
-    .header{
-        &__boxes{
+    .container {
+        margin: 2rem 5% 2rem 5%;
+    }
+    .header {
+        &__boxes {
             flex-direction: column;
+
             &__box {
                 margin: .5rem 0 1rem 0;
             }
@@ -73,15 +104,15 @@
 
 ngx-tooltip-content.ngx-charts-tooltip-content.type-tooltip {
     .tooltip-caret.position-top {
-      border-top-color: $primary-color;
-      box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+        border-top-color: $primary-color;
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
     }
-    
+
     font-size: 1rem;
     background-color: $primary-color;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
     padding: .5rem 1rem .5rem 1rem;
-  }
+}
 
 text.pie-label {
     font-size: 1rem;
@@ -95,11 +126,11 @@ text.pie-label {
 
 .chart-legend {
     background-color: $primary-color;
-    padding: .5rem .0 .5rem 0!important;
+    padding: .5rem .0 .5rem 0 !important;
     border-radius: .5rem;
 }
 
-.chart-legend > div{
+.chart-legend>div {
     font-size: 1.2rem;
     color: white;
 }
@@ -107,33 +138,34 @@ text.pie-label {
 .legend-labels {
     display: flex;
     flex-direction: column;
-    background: $primary-color!important;
+    background: $primary-color !important;
 }
 
 // ####################### line chart styles ##########################
 
-.x.axis > .ng-star-inserted {
+.x.axis>.ng-star-inserted {
     padding-top: 2rem;
-    & > text {
+
+    &>text {
         transform: translateY(.7rem);
         fill: $grey-text;
         font-size: 1.8rem;
     }
 }
 
-.y.axis > .ng-star-inserted {
-    & > text {
+.y.axis>.ng-star-inserted {
+    &>text {
         fill: $grey-text;
         transform: rotate(270deg) translateY(.8rem);
     }
 }
 
 line {
-    stroke: rgb(100, 100, 100)!important;
+    stroke: rgb(100, 100, 100) !important;
 }
 
 .tick.ng-star-inserted {
-    & > text {
-        font-size: .85rem!important;
+    &>text {
+        font-size: .85rem !important;
     }
 }

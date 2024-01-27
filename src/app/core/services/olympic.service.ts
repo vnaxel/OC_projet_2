@@ -22,7 +22,7 @@ loadInitialData() {
             
             // redirect to error page
             this.olympics$.unsubscribe();
-            this.router.navigate(['/error']);
+            this.router.navigate(['/error'], { state: { error: {message: error.message, name: error.name} } });
 
             return caught;
         })

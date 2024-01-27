@@ -53,6 +53,8 @@ export class DetailsComponent {
                     });
 
                 this.chartData = [{ name: this.countryName, series: medalsPerYear }];
+            } else {
+                this.router.navigate(['/not-found']);
             }
         });
     }

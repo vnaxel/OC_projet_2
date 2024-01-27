@@ -1,0 +1,19 @@
+@import '../../../assets/scss/variables.scss';
+
+h2 {
+    text-align: center;
+    margin: 1rem;
+}
+
+.error {
+    text-align: center;
+    border: 2px solid $primary-color;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: 0 1rem 1rem 1rem;
+    word-wrap: break-word;
+    max-width: 100%;
+    &__message{
+        background-color: rgba(255, 0, 0, 0.219);
+    }
+}
