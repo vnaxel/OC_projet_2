@@ -17,7 +17,10 @@ constructor(private http: HttpClient, private router: Router) {}
 
 loadInitialData() {
     return this.http.get<Olympic[]>(this.olympicUrl).pipe(
-        tap((value) => this.olympics$.next(value)),
+        tap((value) => {
+            this.olympics$.next(value);
+            this.olympics$.complete();
+        }),
         catchError((error, caught) => {
             
             // redirect to error page

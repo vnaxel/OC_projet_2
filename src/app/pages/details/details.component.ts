@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, finalize } from 'rxjs';
 import { Olympic } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 
@@ -19,6 +19,7 @@ export class DetailsComponent {
     public numberOfParticipations: number = 0;
     public numberOfMedals: number = 0;
     public numberOfAtletes: number = 0;
+    public country: Olympic | undefined;
 
     public chartData: any[] = [];
     public yScaleMax: number = 0;
@@ -26,11 +27,20 @@ export class DetailsComponent {
     constructor(private OlympicService: OlympicService, private router: Router, private route: ActivatedRoute) { }
 
     ngOnInit(): void {
+
         this.olympics$ = this.OlympicService.getOlympics();
+
         this.countryId = this.route.snapshot.params['id'];
 
-        this.subscription = this.olympics$.subscribe(data => {
+        this.subscription = this.olympics$
+        .pipe(finalize(() => {
+            if (!this.country) {
+                this.router.navigate(['/error'], { state: { error: {message: 'Country not found', name: '404'} } });
+            }
+        }))
+        .subscribe(data => {
             const country = data.find(country => country.id == this.countryId);
+            this.country = country;
             if (country) {
 
                 this.countryName = country.country;
@@ -55,9 +65,6 @@ export class DetailsComponent {
 
                 this.yScaleMax = Math.max(...medalsPerYear.map(medal => medal.value))*2;
                 this.chartData = [{ name: this.countryName, series: medalsPerYear }];
-
-            } else {
-                this.router.navigate(['/not-found']);
             }
         });
     }
