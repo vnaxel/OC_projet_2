@@ -21,6 +21,7 @@ export class DetailsComponent {
     public numberOfAtletes: number = 0;
 
     public chartData: any[] = [];
+    public yScaleMax: number = 0;
 
     constructor(private OlympicService: OlympicService, private router: Router, private route: ActivatedRoute) { }
 
@@ -52,7 +53,9 @@ export class DetailsComponent {
                         }
                     });
 
+                this.yScaleMax = Math.max(...medalsPerYear.map(medal => medal.value))*2;
                 this.chartData = [{ name: this.countryName, series: medalsPerYear }];
+
             } else {
                 this.router.navigate(['/not-found']);
             }
