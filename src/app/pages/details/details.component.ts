@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription, finalize } from 'rxjs';
+import { DetailsChartData } from 'src/app/core/models/DetailsChartData';
+import { Country } from 'src/app/core/models/Country';
 import { Olympic } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrl: './details.component.scss'
+    selector: 'app-details',
+    templateUrl: './details.component.html',
+    styleUrl: './details.component.scss'
 })
 export class DetailsComponent {
     public olympics$!: Observable<Olympic[]>;
@@ -21,7 +23,7 @@ export class DetailsComponent {
     public numberOfAtletes: number = 0;
     public country: Olympic | undefined;
 
-    public chartData: any[] = [];
+    public chartData: DetailsChartData[] = [];
     public yScaleMax: number = 0;
 
     constructor(private OlympicService: OlympicService, private router: Router, private route: ActivatedRoute) { }
@@ -57,8 +59,8 @@ export class DetailsComponent {
                         }
                     });
 
-                this.yScaleMax = Math.max(...medalsPerYear.map(medal => medal.value))*2;
-                this.chartData = [{ name: this.countryName, series: medalsPerYear }];
+                this.yScaleMax = Math.max(...medalsPerYear.map(medal => medal.value)) * 2;
+                this.chartData = [{ name: this.countryName, series: medalsPerYear }];     // le nom du pays et un tableau d'objets contenant l'année et le nombre de médailles de cette année
             }
         });
     }

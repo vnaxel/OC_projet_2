@@ -42,11 +42,11 @@ export class DashboardComponent {
             this.chartData = this.OlympicData
                 .map(country => {
                     return {
-                        extra: {
-                            id: country.id,
+                        extra: {                 
+                            id: country.id,          // l'id du pays utlisé comme parametre d'url pour la navigation
                         },
-                        name: country.country,
-                        value: country.participations
+                        name: country.country,        // le nom du pays
+                        value: country.participations // le nombre de medailles cumulées
                             .map(participation => participation.medalsCount)
                             .reduce((acc, value) => acc + value, 0)
                     }
